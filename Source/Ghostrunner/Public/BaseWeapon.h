@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "Components/ArrowComponent.h"
 #include "Particles/ParticleSystemComponent.h"
+#include "TimelineOML.h"
+#include "Templates/SubclassOf.h"
 #include "BaseWeapon.generated.h"
 
 UCLASS()
@@ -17,13 +19,17 @@ public:
 	// Sets default values for this actor's properties
 	ABaseWeapon();
 
-	//TArray<UTimelineOML*> TimelinesList;
-	//UTimelineOML* WeaponChargeTimeline;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BaseWeapon")
+	TArray<TSubclassOf<class UTimelineOML>> TimelinesList;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BaseWeapon")
+	TSubclassOf<class UTimelineOML> WeaponChargeTimeline;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BaseWeapon")
 	UCurveFloat* WeaponChargeFloatCurve;
 	
-	//UTimelineOML* BetweenAttackTimeline;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BaseWeapon")
+	TSubclassOf<class UTimelineOML> BetweenAttackTimeline;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BaseWeapon")
 	UCurveFloat* BetweenAttackFloatCurve;
